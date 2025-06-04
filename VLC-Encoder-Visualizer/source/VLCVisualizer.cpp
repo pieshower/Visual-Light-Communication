@@ -6,7 +6,7 @@
 
 VLCVisualizer::VLCVisualizer(int windowSize, int symbolDurationMs) {
     windowSize_ = windowSize;
-    symbolDurationMs_ = symbolDurationMs_;
+    symbolDurationMs_ = symbolDurationMs;
 }
 
 void VLCVisualizer::play(const std::string& bitstream) {
