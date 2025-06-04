@@ -28,6 +28,15 @@ std::string VLCEncoder::manchesterEncode(const std::string& binaryInput) {
         encoded += (bit == '1') ? "10" : "01";
     }
 
+    // std::cout << "Econded String Size: " << encoded.size() << std::endl;
+    // std::cout << "Image Encoded String: " << std::endl;
+    // for (size_t i = 0; i < encoded.size(); ++i) {
+    //     std::cout << encoded[i];
+    //     if ((i + 1) % 128 == 0) {
+    //         std::cout << std::endl;
+    //     }
+    // }
+
     return encoded;
 }
 

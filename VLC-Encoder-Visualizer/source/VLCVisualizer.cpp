@@ -13,16 +13,10 @@ void VLCVisualizer::play(const std::string& bitstream) {
     cv::namedWindow("VLC Visualizer", cv::WINDOW_NORMAL);
     cv::resizeWindow("VLC Visualizer", windowSize_, windowSize_);
 
-    // std::cout << "Econded String Size: " << bitstream.size() << std::endl;
-    // std::cout << "Image Encoded String: " << std::endl;
-    // for (size_t i = 0; i < bitstream.size(); ++i) {
-    //     std::cout << bitstream[i];
-    //     if ((i + 1) % 128 == 0) {
-    //         std::cout << std::endl;
-    //     }
-    // }
+    auto start = std::chrono::steady_clock::now();
 
-    for (char bit : bitstream) {
+    for (int i = 0; i < bitstream.size(); ++i) {
+        char bit = bitstream[i];
         cv::Mat frame;
         if (bit == '1') {
             frame = cv::Mat::ones(windowSize_, windowSize_, CV_8UC1) * 255;  // White
@@ -32,7 +26,8 @@ void VLCVisualizer::play(const std::string& bitstream) {
         cv::imshow("VLC Visualizer", frame);
         cv::pollKey();
 
-        std::this_thread::sleep_for(std::chrono::milliseconds(symbolDurationMs_));
+        auto next_frame_time = start + std::chrono::milliseconds(symbolDurationMs_ * (i + 1));
+        std::this_thread::sleep_until(next_frame_time);
     }
 
     cv::destroyWindow("VLC Visualizer");
