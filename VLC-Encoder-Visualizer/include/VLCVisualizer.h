@@ -14,7 +14,7 @@ public:
     static VLCVisualizer& getVLCVisualizer() { return sVLCVisualizer_; }
 
      VLCVisualizer(int windowSize = 500, int symbolDurationMs = 50);
-    ~VLCVisualizer() {}
+    ~VLCVisualizer() = default;
 
     void play(const std::string& bitstream);
 };
