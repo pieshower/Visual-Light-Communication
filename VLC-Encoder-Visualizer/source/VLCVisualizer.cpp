@@ -18,11 +18,13 @@ void VLCVisualizer::play(const std::string& bitstream) {
     for (int i = 0; i < bitstream.size(); ++i) {
         char bit = bitstream[i];
         cv::Mat frame;
+
         if (bit == '1') {
             frame = cv::Mat::ones(windowSize_, windowSize_, CV_8UC1) * 255;  // White
         } else {
             frame = cv::Mat::zeros(windowSize_, windowSize_, CV_8UC1);  // Black
         }
+        
         cv::imshow("VLC Visualizer", frame);
         cv::pollKey();
 
