@@ -72,6 +72,6 @@ int VLCEncoder::readImage(const std::string& path_to_file) {
 }
 
 std::vector<uint8_t> VLCEncoder::encodeImage() {
-    std::vector<uint8_t> bitStream = imageToBinary(image);
-    return manchesterEncode(bitStream);
+    std::vector<uint8_t> binaryStream = imageToBinary(image);
+    return manchesterEncode(binaryStream);
 }
