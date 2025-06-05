@@ -9,8 +9,8 @@ VLCVisualizer::VLCVisualizer(int windowSize, int symbolDurationMs) {
     symbolDurationMs_ = symbolDurationMs;
 }
 
-void VLCVisualizer::sendDataPAK(const std::vector<uint8_t>& bitStream) {
-    size_t totalBits = bitStream.size();
+void VLCVisualizer::sendDataPAK(const std::vector<uint8_t>& binaryStream) {
+    size_t totalBits = binaryStream.size();
     size_t frameSize = 64 * 64;
     size_t numFrames = (totalBits + frameSize - 1) / frameSize;
 
@@ -25,7 +25,7 @@ void VLCVisualizer::sendDataPAK(const std::vector<uint8_t>& bitStream) {
             int col = i % 64;
 
             if (bitIndex < totalBits) {
-                if (bitStream[bitIndex] == 1) {
+                if (binaryStream[bitIndex] == 1) {
                     frame.at<uchar>(row, col) = 255; // white
                 }
                 else {
@@ -44,11 +44,11 @@ void VLCVisualizer::sendDataPAK(const std::vector<uint8_t>& bitStream) {
     }
 }
 
-void VLCVisualizer::sendDataOOK(const std::vector<uint8_t>& bitStream) {
+void VLCVisualizer::sendDataOOK(const std::vector<uint8_t>& binaryStream) {
     auto start = std::chrono::steady_clock::now();
 
-    for (size_t i = 0; i < bitStream.size(); ++i) {
-        uint8_t bit = bitStream[i];
+    for (size_t i = 0; i < binaryStream.size(); ++i) {
+        uint8_t bit = binaryStream[i];
         cv::Mat frame;
 
         if (bit == 1) {
@@ -65,12 +65,12 @@ void VLCVisualizer::sendDataOOK(const std::vector<uint8_t>& bitStream) {
     }
 }
 
-void VLCVisualizer::play(const std::vector<uint8_t>& bitStream) {
+void VLCVisualizer::play(const std::vector<uint8_t>& binaryStream) {
     cv::namedWindow("VLC Visualizer", cv::WINDOW_NORMAL);
     cv::resizeWindow("VLC Visualizer", windowSize_, windowSize_);
 
-    // sendDataPAK(bitStream);
-    sendDataOOK(bitStream);
+    // sendDataPAK(binaryStream);
+    sendDataOOK(binaryStream);
 
     cv::destroyWindow("VLC Visualizer");
 }
