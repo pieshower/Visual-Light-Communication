@@ -44,8 +44,6 @@ std::vector<uint8_t> VLCDecoder::manchesterDecode(const std::vector<uint8_t>& bi
         else {
             std::cerr << "Manchester decoding error at position " << i << ": invalid pair (" 
                       << (int)frst << "," << (int)scnd << ")" << std::endl;
-            // optional: you can choose whether to push back some special error value
-            // decoded.push_back(255); // 255 = error mark
         }
     }
 
