@@ -12,8 +12,8 @@ private:
     int windowSize_;
     int symbolDurationMs_;
 
-    void sendDataPAK(const std::vector<uint8_t>& bitStream);
-    void sendDataOOK(const std::vector<uint8_t>& bitStream);
+    void sendDataPAK(const std::vector<uint8_t>& binaryStream);
+    void sendDataOOK(const std::vector<uint8_t>& binaryStream);
 
 public:
     static VLCVisualizer& getVLCVisualizer() { return sVLCVisualizer_; }
@@ -21,7 +21,7 @@ public:
      VLCVisualizer(int windowSize = 256, int symbolDurationMs = 5);
     ~VLCVisualizer() = default;
 
-    void play(const std::vector<uint8_t>& bitStream);
+    void play(const std::vector<uint8_t>& binaryStream);
 };
 
 inline VLCVisualizer VLCVisualizer::sVLCVisualizer_;
