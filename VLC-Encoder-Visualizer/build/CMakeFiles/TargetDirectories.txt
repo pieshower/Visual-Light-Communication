@@ -1,3 +1,0 @@
-/home/pie/Documents/Repos/Visual-Light-Communication/VLC-Encoder-Visualizer/build/CMakeFiles/VLC-Encode-Visualize.dir
-/home/pie/Documents/Repos/Visual-Light-Communication/VLC-Encoder-Visualizer/build/CMakeFiles/edit_cache.dir
-/home/pie/Documents/Repos/Visual-Light-Communication/VLC-Encoder-Visualizer/build/CMakeFiles/rebuild_cache.dir
