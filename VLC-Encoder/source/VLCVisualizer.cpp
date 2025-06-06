@@ -69,8 +69,19 @@ void VLCVisualizer::play(const std::vector<uint8_t>& binaryStream) {
     cv::namedWindow("VLC Visualizer", cv::WINDOW_NORMAL);
     cv::resizeWindow("VLC Visualizer", windowSize_, windowSize_);
 
-    // sendDataPAK(binaryStream);
-    sendDataOOK(binaryStream);
+    switch (option) {
+        case 1: {
+            sendDataOOK(binaryStream);
+            break;
+        }
+        case 2: {
+            sendDataPAK(binaryStream);
+            break;
+        }
+        default: {
+            return;
+        }
+    }
 
     cv::destroyWindow("VLC Visualizer");
 }

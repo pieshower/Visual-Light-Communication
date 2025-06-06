@@ -28,7 +28,7 @@ public:
      VLCEncoder() = default;
     ~VLCEncoder() = default;
 
-    static uint8_t option;
+    inline static uint8_t option;
 
     int readInput(const std::string& input);
     std::vector<uint8_t> encode();

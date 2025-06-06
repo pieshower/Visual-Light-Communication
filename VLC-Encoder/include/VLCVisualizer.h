@@ -21,6 +21,8 @@ public:
      VLCVisualizer(int windowSize = 256, int symbolDurationMs = 25);
     ~VLCVisualizer() = default;
 
+    inline static uint8_t option;
+
     void play(const std::vector<uint8_t>& binaryStream);
 };
 
