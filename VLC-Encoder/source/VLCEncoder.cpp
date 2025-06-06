@@ -16,7 +16,7 @@ std::vector<uint8_t> VLCEncoder::bytesToBits(const std::vector<uint8_t>& byteBuf
     return bitBuffer;
 }
 
-std::vector<uint8_t> VLCEncoder::imageToBinary(const cv::Mat& img, int threshold) {
+std::vector<uint8_t> VLCEncoder::imageToBinary(const cv::Mat& img) {
     std::vector<uint8_t> binaryStream;
 
     // for (int i = 0; i < img.rows; ++i) {
