@@ -18,7 +18,7 @@ private:
 public:
     static VLCVisualizer& getVLCVisualizer() { return sVLCVisualizer_; }
 
-     VLCVisualizer(int windowSize = 256, int symbolDurationMs = 5);
+     VLCVisualizer(int windowSize = 256, int symbolDurationMs = 25);
     ~VLCVisualizer() = default;
 
     void play(const std::vector<uint8_t>& binaryStream);

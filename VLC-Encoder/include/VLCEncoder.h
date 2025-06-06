@@ -12,8 +12,12 @@ private:
     static VLCEncoder sVLCEncoder_;
 
     cv::Mat image;
+    std::string str;
     
+    std::vector<uint8_t> bytesToBits(const std::vector<uint8_t>& byteBuffer);
+
     std::vector<uint8_t> imageToBinary(const cv::Mat& img, int threshold = 128);
+    std::vector<uint8_t> stringToBinary(const std::string& str);
     std::vector<uint8_t> manchesterEncode(const std::vector<uint8_t>& binaryStream);
     
 public:
@@ -21,9 +25,11 @@ public:
 
      VLCEncoder() = default;
     ~VLCEncoder() = default;
-    
-    int readImage(const std::string& path_to_file);
-    std::vector<uint8_t> encodeImage();
+
+    static uint8_t option;
+
+    int readInput(const std::string& input);
+    std::vector<uint8_t> encode();
 };
 
 inline VLCEncoder VLCEncoder::sVLCEncoder_;
